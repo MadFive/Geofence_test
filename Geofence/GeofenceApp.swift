@@ -11,7 +11,9 @@ import SwiftUI
 struct GeofenceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //MenuView()
+            GeofenceListView()
+            //GeofenceEditView()
         }
     }
 }

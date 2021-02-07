@@ -7,19 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29438CF725D070060093F5CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29438CF625D070060093F5CC /* MenuView.swift */; };
+		29438CFA25D074870093F5CC /* ZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29438CF925D074870093F5CC /* ZoomView.swift */; };
+		2949E44E25D04326007EC977 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949E44D25D04326007EC977 /* Location.swift */; };
+		2949E45125D04440007EC977 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949E45025D04440007EC977 /* ModelData.swift */; };
+		2949E45925D04733007EC977 /* locationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2949E45825D04733007EC977 /* locationData.json */; };
+		2949E45C25D04A44007EC977 /* LocationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949E45B25D04A44007EC977 /* LocationRow.swift */; };
 		29EB0CE625D0383D00677BAF /* GeofenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB0CE525D0383D00677BAF /* GeofenceApp.swift */; };
-		29EB0CE825D0383D00677BAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB0CE725D0383D00677BAF /* ContentView.swift */; };
+		29EB0CE825D0383D00677BAF /* GeofenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB0CE725D0383D00677BAF /* GeofenceListView.swift */; };
 		29EB0CEA25D0383E00677BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29EB0CE925D0383E00677BAF /* Assets.xcassets */; };
 		29EB0CED25D0383E00677BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29EB0CEC25D0383E00677BAF /* Preview Assets.xcassets */; };
+		29EB0CF625D039E400677BAF /* GeofenceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB0CF525D039E400677BAF /* GeofenceEditView.swift */; };
+		29EB8B3025D06532005CD276 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB8B2F25D06532005CD276 /* View+Extensions.swift */; };
+		29EB8B3325D06546005CD276 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB8B3225D06546005CD276 /* RoundedCorners.swift */; };
+		29EB8B3825D06CE4005CD276 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB8B3725D06CE4005CD276 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29438CF625D070060093F5CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		29438CF925D074870093F5CC /* ZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomView.swift; sourceTree = "<group>"; };
+		2949E44D25D04326007EC977 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2949E45025D04440007EC977 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		2949E45825D04733007EC977 /* locationData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locationData.json; sourceTree = "<group>"; };
+		2949E45B25D04A44007EC977 /* LocationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRow.swift; sourceTree = "<group>"; };
 		29EB0CE225D0383D00677BAF /* Geofence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29EB0CE525D0383D00677BAF /* GeofenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceApp.swift; sourceTree = "<group>"; };
-		29EB0CE725D0383D00677BAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		29EB0CE725D0383D00677BAF /* GeofenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceListView.swift; sourceTree = "<group>"; };
 		29EB0CE925D0383E00677BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29EB0CEC25D0383E00677BAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29EB0CEE25D0383E00677BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29EB0CF525D039E400677BAF /* GeofenceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceEditView.swift; sourceTree = "<group>"; };
+		29EB8B2F25D06532005CD276 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		29EB8B3225D06546005CD276 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		29EB8B3725D06CE4005CD276 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +53,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2949E45325D044D0007EC977 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2949E45B25D04A44007EC977 /* LocationRow.swift */,
+				29EB8B2F25D06532005CD276 /* View+Extensions.swift */,
+				29EB8B3225D06546005CD276 /* RoundedCorners.swift */,
+				29EB8B3725D06CE4005CD276 /* MapView.swift */,
+				29438CF625D070060093F5CC /* MenuView.swift */,
+				29438CF925D074870093F5CC /* ZoomView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2949E45425D044E4007EC977 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2949E44D25D04326007EC977 /* Location.swift */,
+				2949E45025D04440007EC977 /* ModelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2949E45525D044ED007EC977 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2949E45825D04733007EC977 /* locationData.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		29EB0CD925D0383D00677BAF = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				29EB0CE525D0383D00677BAF /* GeofenceApp.swift */,
-				29EB0CE725D0383D00677BAF /* ContentView.swift */,
+				29EB8B3525D0691E005CD276 /* App Views */,
+				2949E45325D044D0007EC977 /* Views */,
+				2949E45525D044ED007EC977 /* Resources */,
+				2949E45425D044E4007EC977 /* Model */,
 				29EB0CE925D0383E00677BAF /* Assets.xcassets */,
 				29EB0CEE25D0383E00677BAF /* Info.plist */,
 				29EB0CEB25D0383E00677BAF /* Preview Content */,
@@ -67,6 +120,15 @@
 				29EB0CEC25D0383E00677BAF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		29EB8B3525D0691E005CD276 /* App Views */ = {
+			isa = PBXGroup;
+			children = (
+				29EB0CE725D0383D00677BAF /* GeofenceListView.swift */,
+				29EB0CF525D039E400677BAF /* GeofenceEditView.swift */,
+			);
+			path = "App Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +190,7 @@
 			files = (
 				29EB0CED25D0383E00677BAF /* Preview Assets.xcassets in Resources */,
 				29EB0CEA25D0383E00677BAF /* Assets.xcassets in Resources */,
+				2949E45925D04733007EC977 /* locationData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +201,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29EB0CE825D0383D00677BAF /* ContentView.swift in Sources */,
+				29438CFA25D074870093F5CC /* ZoomView.swift in Sources */,
+				29EB0CE825D0383D00677BAF /* GeofenceListView.swift in Sources */,
 				29EB0CE625D0383D00677BAF /* GeofenceApp.swift in Sources */,
+				2949E45125D04440007EC977 /* ModelData.swift in Sources */,
+				29EB8B3025D06532005CD276 /* View+Extensions.swift in Sources */,
+				29EB8B3325D06546005CD276 /* RoundedCorners.swift in Sources */,
+				29438CF725D070060093F5CC /* MenuView.swift in Sources */,
+				2949E44E25D04326007EC977 /* Location.swift in Sources */,
+				29EB0CF625D039E400677BAF /* GeofenceEditView.swift in Sources */,
+				29EB8B3825D06CE4005CD276 /* MapView.swift in Sources */,
+				2949E45C25D04A44007EC977 /* LocationRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -252,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -272,13 +344,14 @@
 				DEVELOPMENT_TEAM = 2EAU56KA4T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Geofence/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.madfive.Geofence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -294,7 +367,7 @@
 				DEVELOPMENT_TEAM = 2EAU56KA4T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Geofence/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,0 +1,29 @@
+[
+{
+  "name": "Sultan Hotel",
+  "address": "Sultan Hotel, Kota Banda Aceh",
+  "latitude": 5.55739,
+  "longitude": 95.3208,
+  "alarm": 0,
+  "state": 0,
+  "radius": 1
+},
+{
+  "name": "Paparon Pizza Lhokseumawe",
+  "address": "Unnamed road, Near Kota Lhokseumawe",
+  "latitude": 5.17837,
+  "longitude": 97.1484,
+  "alarm": 0,
+  "state": 1,
+  "radius": 2
+},
+{
+  "name": "Pocut Baren",
+  "address": "Pocut Baren, Kota Banda Aceh",
+  "latitude": 5.562,
+  "longitude": 95.3254,
+  "alarm": 1,
+  "state": 0,
+  "radius": 1
+}
+]
