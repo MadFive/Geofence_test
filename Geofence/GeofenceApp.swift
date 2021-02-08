@@ -11,8 +11,19 @@ import SwiftUI
 struct GeofenceApp: App {
     var body: some Scene {
         WindowGroup {
-            //MenuView()
-            GeofenceListView()
+            
+            
+            ContentView()
+            
+            
+//            ZStack {
+//                //MapView().offset(y: 200)
+//                //GeofenceListView()
+//
+//                GreenView().offset(y: 200)
+//                BlueView()
+//            }
+            
             //GeofenceEditView()
         }
     }

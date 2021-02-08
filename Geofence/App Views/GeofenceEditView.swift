@@ -9,17 +9,32 @@ import SwiftUI
 
 struct GeofenceEditView: View {
     
+    @Binding var show: Bool
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
         
         
-        
         VStack {
-            MapView()
-                .offset(y: 100)
-                .padding(.top, -100)
+            //header
+            ZStack {
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(width: UIScreen.main.bounds.width, height: 40)
+                
+                    HStack {
+                        Button(action: { self.show = false }) { Text("Back") }
+                        Spacer()
+                        Text("Edit Geofence")
+                        Spacer()
+                        Button(action: { self.show = false }) { Text("Save") }
+                    }
+                .padding([.leading, .trailing], 20)
+            }
             
+            
+            Spacer()
+            //ZoomView()
             ZStack {
                 Rectangle()
                     .fill(Color.white)
@@ -29,22 +44,22 @@ struct GeofenceEditView: View {
             }
         }
         
-            
-            .navigationBarTitle("Edit Geofence", displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                leading: Button(action: { presentation.wrappedValue.dismiss() }) {
-                  Image(systemName: "chevron.left")
-                    .imageScale(.large)
-                },
-                trailing: Button("Save") {
-                    self.save()
-                })
-            .foregroundColor(.black)
+        //            .navigationBarTitle("Edit Geofence", displayMode: .inline)
+        //            .navigationBarBackButtonHidden(true)
+        //            .navigationBarItems(
+        //                leading: Button(action: { presentation.wrappedValue.dismiss() }) {
+        //                  Image(systemName: "chevron.left")
+        //                    .imageScale(.large)
+        //                },
+        //                trailing: Button("Save") {
+        //                    self.save()
+        //                })
+        .foregroundColor(.black)
+        .background(Color.clear)
     }
     
     func save() {
-        
+        self.show = false
         return
         //save state and return to list
         //fancy popup message about saving it succesfully upon completion
@@ -61,8 +76,8 @@ struct GeofenceEditView: View {
     
 }
 
-struct GeofenceEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        GeofenceEditView()
-    }
-}
+//struct GeofenceEditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GeofenceEditView(show: true)
+//    }
+//}
