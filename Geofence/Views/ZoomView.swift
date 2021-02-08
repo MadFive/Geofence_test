@@ -10,20 +10,24 @@ import SwiftUI
 struct ZoomView: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25, style: .continuous)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.white)
         
             VStack {
-                Button("+") {
+                Button(action: {
                     print("plus")
-                }
-                Button("-") {
+                }) { Text("+").font(.title) } //Image("ic_positive")
+                Spacer()
+                Divider()
+                Spacer()
+                Button(action: {
                     print("minus")
-                }
+                }) { Text("-").font(.title) }
             }
+            .padding([.top, .bottom], 10)
         }
         .shadow(radius: 10)
-        .frame(width: 25, height: 100, alignment: .center)
+        .frame(width: 50, height: 100, alignment: .center)
     }
 }
 

@@ -6,6 +6,11 @@
 //
 
 import Foundation
+import Combine
+
+//final class TestModelData: ObservableObject {
+//    @Published var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
+//}
 
 struct ModelData {
     

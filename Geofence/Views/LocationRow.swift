@@ -22,8 +22,8 @@ struct LocationRow: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
-            Text("ON") //location.alarm
-                .foregroundColor(.blue)
+            Text((location.alarm == 0) ? "OFF" : "ON")
+                .foregroundColor((location.alarm == 0) ? Color.gray : Color.blue)
         }
         Spacer()
     }

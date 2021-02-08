@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GeofenceListView: View {
+    
+    //@EnvironmentObject var modelData: TestModelData
+    
     var body: some View {
         NavigationView {
             
@@ -15,7 +18,7 @@ struct GeofenceListView: View {
                 
             ZStack {
             LocationRow(location: location)
-            NavigationLink(destination: GeofenceEditView()) {
+                NavigationLink(destination: GeofenceEditView(location: location)) {
                 EmptyView()
             }
             .buttonStyle(PlainButtonStyle())

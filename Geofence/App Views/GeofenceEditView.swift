@@ -11,22 +11,34 @@ struct GeofenceEditView: View {
     
     @Environment(\.presentationMode) var presentation
     
+    var location: Location
+    
     var body: some View {
         
         
         
-        VStack {
-            MapView()
-                .offset(y: 100)
-                .padding(.top, -100)
+        VStack(alignment: .leading) {
+            
+            //let offset = 50
+            MapView(location: location)
+                .offset(y: 150)
+                .padding(.top, -150)
+            
+            Spacer()
+            
+            ZoomView()
+                .offset(y: -50)
+                .padding(.leading, 20)
+            
             
             ZStack {
                 Rectangle()
                     .fill(Color.white)
-                    .frame(width: UIScreen.main.bounds.width, height: 100)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
-                MenuView()
+                MenuView(location: location)
             }
+            .frame(width: UIScreen.main.bounds.width, height: 120)
+            //.background(Color.blue)
         }
         
             
@@ -34,12 +46,8 @@ struct GeofenceEditView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading: Button(action: { presentation.wrappedValue.dismiss() }) {
-                  Image(systemName: "chevron.left")
-                    .imageScale(.large)
-                },
-                trailing: Button("Save") {
-                    self.save()
-                })
+                  Image(systemName: "chevron.left").imageScale(.large) },
+                trailing: Button("Save") { self.save() })
             .foregroundColor(.black)
     }
     
@@ -63,6 +71,12 @@ struct GeofenceEditView: View {
 
 struct GeofenceEditView_Previews: PreviewProvider {
     static var previews: some View {
-        GeofenceEditView()
+        
+        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
+            GeofenceEditView(location: ModelData.instance.locations.first!)
+                        .previewDevice(PreviewDevice(rawValue: deviceName))
+                        .previewDisplayName(deviceName)
+        }
+        
     }
 }
