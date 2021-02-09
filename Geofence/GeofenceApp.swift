@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct GeofenceApp: App {
+    @StateObject private var modelData = ModelData.instance
+    
     var body: some Scene {
         WindowGroup {
             //MenuView()
             //Image("ic_alarm")
             
             GeofenceListView()
+                .environmentObject(modelData)
             //GeofenceEditView()
         }
     }

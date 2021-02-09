@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2906DFEB25D2A701009E56A1 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906DFEA25D2A700009E56A1 /* StateButton.swift */; };
+		2906DFEF25D2BC6A009E56A1 /* AlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906DFEE25D2BC6A009E56A1 /* AlarmButton.swift */; };
+		2906DFF325D2BDAE009E56A1 /* RadiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906DFF225D2BDAE009E56A1 /* RadiusButton.swift */; };
 		29438CF725D070060093F5CC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29438CF625D070060093F5CC /* MenuView.swift */; };
 		29438CFA25D074870093F5CC /* ZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29438CF925D074870093F5CC /* ZoomView.swift */; };
 		2949E44E25D04326007EC977 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949E44D25D04326007EC977 /* Location.swift */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2906DFEA25D2A700009E56A1 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
+		2906DFEE25D2BC6A009E56A1 /* AlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmButton.swift; sourceTree = "<group>"; };
+		2906DFF225D2BDAE009E56A1 /* RadiusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusButton.swift; sourceTree = "<group>"; };
 		29438CF625D070060093F5CC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		29438CF925D074870093F5CC /* ZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomView.swift; sourceTree = "<group>"; };
 		2949E44D25D04326007EC977 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -57,11 +63,14 @@
 			isa = PBXGroup;
 			children = (
 				2949E45B25D04A44007EC977 /* LocationRow.swift */,
+				2906DFEA25D2A700009E56A1 /* StateButton.swift */,
 				29EB8B2F25D06532005CD276 /* View+Extensions.swift */,
 				29EB8B3225D06546005CD276 /* RoundedCorners.swift */,
 				29EB8B3725D06CE4005CD276 /* MapView.swift */,
 				29438CF625D070060093F5CC /* MenuView.swift */,
 				29438CF925D074870093F5CC /* ZoomView.swift */,
+				2906DFEE25D2BC6A009E56A1 /* AlarmButton.swift */,
+				2906DFF225D2BDAE009E56A1 /* RadiusButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,15 +211,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				29438CFA25D074870093F5CC /* ZoomView.swift in Sources */,
+				2906DFEB25D2A701009E56A1 /* StateButton.swift in Sources */,
 				29EB0CE825D0383D00677BAF /* GeofenceListView.swift in Sources */,
 				29EB0CE625D0383D00677BAF /* GeofenceApp.swift in Sources */,
 				2949E45125D04440007EC977 /* ModelData.swift in Sources */,
 				29EB8B3025D06532005CD276 /* View+Extensions.swift in Sources */,
 				29EB8B3325D06546005CD276 /* RoundedCorners.swift in Sources */,
+				2906DFF325D2BDAE009E56A1 /* RadiusButton.swift in Sources */,
 				29438CF725D070060093F5CC /* MenuView.swift in Sources */,
 				2949E44E25D04326007EC977 /* Location.swift in Sources */,
 				29EB0CF625D039E400677BAF /* GeofenceEditView.swift in Sources */,
 				29EB8B3825D06CE4005CD276 /* MapView.swift in Sources */,
+				2906DFEF25D2BC6A009E56A1 /* AlarmButton.swift in Sources */,
 				2949E45C25D04A44007EC977 /* LocationRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

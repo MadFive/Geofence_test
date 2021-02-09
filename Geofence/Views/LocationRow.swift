@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct LocationRow: View {
-    
+    @EnvironmentObject var modelData: ModelData
     var location: Location
+    var locationIndex: Int {
+            modelData.locations.firstIndex(where: { $0.name == location.name })!
+        }
     
     var body: some View {
         Spacer()
@@ -22,18 +25,19 @@ struct LocationRow: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
-            Text((location.alarm == 0) ? "OFF" : "ON")
-                .foregroundColor((location.alarm == 0) ? Color.gray : Color.blue)
+            StateButton(statusOn: $modelData.locations[locationIndex].stateValue)
         }
         Spacer()
     }
 }
 
 struct LocationRoww_Previews: PreviewProvider {
+    
+    static var locations = ModelData.instance.locations
     static var previews: some View {
         Group {
-            LocationRow(location: ModelData.instance.locations[0])
-            LocationRow(location: ModelData.instance.locations[1])
+            LocationRow(location: locations[0])
+            LocationRow(location: locations[1])
         }
             .previewLayout(.fixed(width: 300, height: 70))
     }

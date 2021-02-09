@@ -9,9 +9,11 @@ import SwiftUI
 
 struct MenuView: View {
     
-    @State private var alarmOn = false
-    
-    var location: Location
+//    @Binding private var statusOn: Bool
+//    @Binding private var alarmOn: Bool
+//    @Binding private var radiusValue: Int
+//
+    @Binding var location: Location
     
     
     var body: some View {
@@ -23,7 +25,7 @@ struct MenuView: View {
                         .foregroundColor(.primary)
                     
                     HStack {
-                        Text("123m")
+                        Text("123m") //CurrentPosition - 5.55613, 95.3218
                         Divider()
                         Text(location.address)
                     }
@@ -31,42 +33,20 @@ struct MenuView: View {
                     .foregroundColor(.secondary)
                 }
                 Spacer()
-                Toggle(isOn: $alarmOn) {
+                Toggle(isOn: $location.stateValue) {
                     Text("")
                 }
+                .frame(width: 30)
+                .padding(.trailing, 20)
             }
             Divider()
             HStack {
-                HStack {
-                    Image("ic_alarm")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text("Alarm")
-                    Spacer()
-                    Text((location.alarm == 0) ? "Drive out" : "Drive in")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        
-                }
-                .onTapGesture {
-                    //toggle
-                }
+                
+                AlarmButton(location: $location)
                 
                 Divider()
                 
-                HStack {
-                    Image("ic_radius")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text("Radius")
-                    Spacer()
-                    Text("\(location.radius)km")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .onTapGesture {
-                    //toggle
-                }
+                RadiusButton(location: $location)
             }
         }
         .padding([.leading, .trailing], 20)
@@ -78,6 +58,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(location: ModelData.instance.locations.first!)
+        MenuView(location: .constant(ModelData.instance.locations.first!))
     }
 }

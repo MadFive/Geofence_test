@@ -9,12 +9,12 @@ import SwiftUI
 
 struct GeofenceListView: View {
     
-    //@EnvironmentObject var modelData: TestModelData
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         NavigationView {
             
-            List(ModelData.instance.locations, id: \.name) { location in
+            List(modelData.locations, id: \.name) { location in
                 
             ZStack {
             LocationRow(location: location)
@@ -36,5 +36,6 @@ struct GeofenceListView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         GeofenceListView()
+            .environmentObject(ModelData.instance)
     }
 }

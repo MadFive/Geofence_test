@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 //final class TestModelData: ObservableObject {
-//    @Published var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
+//     var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
 //}
 
-struct ModelData {
+final class ModelData: ObservableObject {
     
     static let instance = ModelData()
-    var locations = [Location]()
+    @Published var locations = [Location]()
     let filename = "locationData.json"
     
     
