@@ -15,10 +15,10 @@ struct ContentView: View {
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @EnvironmentObject var modelData: ModelData
     
-    
     var body: some View {
         let location = ModelData.instance.locations.first!
-        MapView(location: location)
+        MapView(zoomValue: $modelData.zoomValue, location: location)
+            .environmentObject(modelData)
             .onAppear() {
                 self.presentView()
             }

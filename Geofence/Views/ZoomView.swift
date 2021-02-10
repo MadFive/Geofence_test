@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ZoomView: View {
+    
+    @EnvironmentObject var modelData: ModelData
+    //var zoomValue = 0.1
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -15,13 +19,18 @@ struct ZoomView: View {
         
             VStack {
                 Button(action: {
-                    print("plus")
+                    modelData.zoomValue -= (modelData.zoomValue < 0.2) ? 0 : 0.1
+                    print(modelData.zoomValue)
+                    
                 }) { Text("+").font(.title) } //Image("ic_positive")
                 Spacer()
                 Divider()
                 Spacer()
                 Button(action: {
-                    print("minus")
+                    print(modelData.zoomValue)
+                    modelData.zoomValue += 0.1
+                    
+                    
                 }) { Text("-").font(.title) }
             }
             .padding([.top, .bottom], 10)

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 //final class TestModelData: ObservableObject {
 //     var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
@@ -15,9 +16,9 @@ import Combine
 final class ModelData: ObservableObject {
     
     static let instance = ModelData()
+    @Published var zoomValue: Double = 0.1
     @Published var locations = [Location]()
     let filename = "locationData.json"
-    
     
     private init() {
         locations = load("locationData.json")
@@ -82,5 +83,22 @@ final class ModelData: ObservableObject {
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
+    }
+}
+
+
+
+struct ModelDataKey: EnvironmentKey {
+    static let defaultValue = ModelData.instance
+}
+
+extension EnvironmentValues {
+    var modelData: ModelData {
+        get {
+            return self[ModelDataKey.self]
+        }
+        set {
+            self[ModelDataKey.self] = newValue
+        }
     }
 }

@@ -13,6 +13,13 @@ struct GeofenceListView: View {
     @State private var showEditView = false
     @State private var selectedLocation: Location?
     
+    var locationIndex: Int {
+        if let location = selectedLocation {
+            return modelData.locations.firstIndex(where: { $0.name == location.name })!
+        }
+        return 0
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -49,10 +56,11 @@ struct GeofenceListView: View {
             .offset(x: !self.showEditView ? 0 : -UIScreen.main.bounds.width)
             .animation(.spring())
             
-            GeofenceEditView(show: $showEditView, location: selectedLocation)
+            GeofenceEditView(show: $showEditView, location: $modelData.locations[locationIndex])
+                .environmentObject(modelData)
                 .offset(x: self.showEditView ? 0 : UIScreen.main.bounds.width)
                 .animation(.spring())
-                .environmentObject(modelData)
+                //.environmentObject(modelData)
             //        }
     }
     }

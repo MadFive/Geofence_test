@@ -15,7 +15,6 @@ struct MenuView: View {
 //
     @Binding var location: Location
     
-    
     var body: some View {
         VStack {
             HStack {
@@ -33,7 +32,8 @@ struct MenuView: View {
                     .foregroundColor(.secondary)
                 }
                 Spacer()
-                Toggle(isOn: $location.stateValue) {
+                
+                Toggle(isOn: $location.stateValue) { //$location.stateValue ??
                     Text("")
                 }
                 .frame(width: 30)

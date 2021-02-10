@@ -9,17 +9,19 @@ import SwiftUI
 
 struct GeofenceEditView: View {
     
-    @Binding var show: Bool
     @Environment(\.presentationMode) var presentation
+    //@EnvironmentObject var modelData: ModelData
+    @Binding var show: Bool
+    @Binding var location: Location
     @EnvironmentObject var modelData: ModelData
     
-    var location: Location?
-    var locationIndex: Int {
-        if let location = location {
-            return modelData.locations.firstIndex(where: { $0.name == location.name })!
-        }
-        return 0
-        }
+//    @State private var tempLocation: Location = ModelData.instance.locations.first!
+//    var locationIndex: Int {
+////        if let location = location {
+//            return modelData.locations.firstIndex(where: { $0.name == location.name })!
+////        }
+////        return 0
+//    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -44,13 +46,14 @@ struct GeofenceEditView: View {
             ZoomView()
                 .offset(y: -50)
                 .padding(.leading, 20)
+                .environmentObject(modelData)
             
             
             ZStack {
                 Rectangle()
                     .fill(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
-                MenuView(location: $modelData.locations[locationIndex])
+                MenuView(location: $location)
             }
             .frame(width: UIScreen.main.bounds.width, height: 120)
             //.background(Color.blue)
@@ -69,9 +72,10 @@ struct GeofenceEditView: View {
     func save() {
         
         //commit changes to env obj
-        if let location = location {
-        modelData.locations[locationIndex] = location
-        }
+//        if let tempLocation = tempLocation {
+//            location = tempLocation
+        //modelData.locations[locationIndex] = location
+//        }
         return
         //save state and return to list
         //fancy popup message about saving it succesfully upon completion
@@ -91,7 +95,7 @@ struct GeofenceEditView_Previews: PreviewProvider {
     static var previews: some View {
         
 //        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
-        GeofenceEditView(show: .constant(true), location: ModelData.instance.locations.first!)
+        GeofenceEditView(show: .constant(true), location: .constant(ModelData.instance.locations.first!))
 //                        .previewDevice(PreviewDevice(rawValue: deviceName))
 //                        .previewDisplayName(deviceName)
 //        }
