@@ -13,12 +13,8 @@ struct GeofenceApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //MenuView()
-            //Image("ic_alarm")
-            
-            GeofenceListView()
+            ContentView()
                 .environmentObject(modelData)
-            //GeofenceEditView()
         }
     }
 }

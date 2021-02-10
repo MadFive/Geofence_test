@@ -9,27 +9,35 @@ import SwiftUI
 
 struct GeofenceEditView: View {
     
+    @Binding var show: Bool
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var modelData: ModelData
     
-    var location: Location
+    var location: Location?
     var locationIndex: Int {
-            modelData.locations.firstIndex(where: { $0.name == location.name })!
+        if let location = location {
+            return modelData.locations.firstIndex(where: { $0.name == location.name })!
         }
-//    var radiusValues = [1, 2, 3, 5, 10]
-//    var currentRadiusIndex: Int {
-//        return 1
-//    }
-    
+        return 0
+        }
     
     var body: some View {
-        
         VStack(alignment: .leading) {
-            
             //let offset = 50
-            MapView(location: location)
-                .offset(y: 150)
-                .padding(.top, -150)
+            ZStack {
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(width: UIScreen.main.bounds.width, height: 40)
+                
+                    HStack {
+                        Button(action: { self.show = false }) { Text("Back") }
+                        Spacer()
+                        Text("Edit Geofence")
+                        Spacer()
+                        Button(action: { self.show = false }) { Text("Save") }
+                    }
+                .padding([.leading, .trailing], 20)
+            }
             
             Spacer()
             
@@ -61,8 +69,9 @@ struct GeofenceEditView: View {
     func save() {
         
         //commit changes to env obj
+        if let location = location {
         modelData.locations[locationIndex] = location
-        
+        }
         return
         //save state and return to list
         //fancy popup message about saving it succesfully upon completion
@@ -82,7 +91,7 @@ struct GeofenceEditView_Previews: PreviewProvider {
     static var previews: some View {
         
 //        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
-        GeofenceEditView(location: ModelData.instance.locations.first!)
+        GeofenceEditView(show: .constant(true), location: ModelData.instance.locations.first!)
 //                        .previewDevice(PreviewDevice(rawValue: deviceName))
 //                        .previewDisplayName(deviceName)
 //        }
