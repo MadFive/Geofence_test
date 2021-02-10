@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 
 struct ContentView: View {
@@ -17,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         let location = ModelData.instance.locations.first!
-        MapView(zoomValue: $modelData.zoomValue, location: location)
+        MapViewController(circle: MKCircle(center: location.locationCoordinate, radius: 250), zoomValue: $modelData.zoomValue, location: location)
             .environmentObject(modelData)
             .onAppear() {
                 self.presentView()
