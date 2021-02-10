@@ -17,20 +17,36 @@ struct MapView: View {
     @Binding var zoomValue: Double
     
     var location: Location
+    var circleSize: CGFloat {
+        250 - 500 * CGFloat(zoomValue)
+    }
+    var circleColor: Color {
+        location.alarmValue ? Color.green : Color.red
+    }
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
     }
     
     var body: some View {
+        
+        
+        ZStack {
+            
+        
         Map(coordinateRegion: $region)
+            .overlay(CircleView(color: circleColor, size: circleSize))
             .onReceive(observedEnvironment.$zoomValue, perform: { _ in
-                withAnimation { 
+                withAnimation {
                     self.setRegion(coordinate)
                 }
             })
             .onAppear {
                 self.setRegion(coordinate)
             }
+            
+            
+                
+    }
     }
     
     private func setRegion(_ coordinate: CLLocationCoordinate2D) {
