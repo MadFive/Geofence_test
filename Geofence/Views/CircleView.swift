@@ -17,7 +17,7 @@ struct CircleView: View {
             .strokeBorder(color.opacity(0.8), lineWidth: 4)
             .background(Circle().foregroundColor(color.opacity(0.2)))
             .frame(width: size, height: size, alignment: .center)
-            .animation(.default)
+            .animation(.linear)
     }
 }
 

@@ -44,33 +44,48 @@ struct MapView: View {
     //@EnvironmentObject var modelData: ModelData
     @State private var region = MKCoordinateRegion()
     @Binding var zoomValue: Double
-    
+    @State var coll = [MKPointAnnotation]()
     
     let mapViewDelegate = MapViewDelegate()
     var location: Location
     var circleSize: CGFloat {
-        250 - 500 * CGFloat(zoomValue)
+        250 - 500 * CGFloat(region.span.latitudeDelta)
     }
     var circleColor: Color {
         location.alarmValue ? Color.green : Color.red
     }
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        //return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        return CLLocationCoordinate2D(latitude: 53.2734, longitude: -7.77832031)
     }
     
+    func onAppear() {
+            let destinationAnnotation = MKPointAnnotation()
+            destinationAnnotation.coordinate = coordinate
+            destinationAnnotation.title = "Location"
+            coll.append(destinationAnnotation)
+        }
+    
     var body: some View {
-        
-        Map(coordinateRegion: $region)
+        Map(coordinateRegion: $region, annotationItems: coll) { item in
+            MapAnnotation(coordinate: coordinate, content: {
+                CircleView(color: circleColor, size: circleSize)
+            })
+        }
+            
+            
 //           overlay(CircleView(color: circleColor, size: circleSize))
             .onReceive(observedEnvironment.$zoomValue, perform: { _ in
                 withAnimation {
                     self.setRegion(coordinate)
-                    self.addOverlay()
+                    //self.addOverlay()
                 }
             })
             .onAppear {
                 self.setRegion(coordinate)
+                self.onAppear()
             }
+        //.onAppear(perform: self.onAppear)
     }
     
     private func setRegion(_ coordinate: CLLocationCoordinate2D) {
@@ -79,8 +94,11 @@ struct MapView: View {
     }
     
     
+    
+    
     func addOverlay() {
         let circle = MKCircle(center: coordinate, radius: 250)
+        CircleView(color: circleColor, size: circleSize)
         
     }
     
@@ -140,3 +158,5 @@ extension Map {
         return self
     }
 }
+
+extension MKPointAnnotation: Identifiable { }
