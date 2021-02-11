@@ -12,7 +12,7 @@ struct GeofenceEditView: View {
     @Environment(\.presentationMode) var presentation
     //@EnvironmentObject var modelData: ModelData
     @Binding var show: Bool
-    @Binding var location: Location
+    //@Binding var location: Location
     @EnvironmentObject var modelData: ModelData
     
 //    @State private var tempLocation: Location = ModelData.instance.locations.first!
@@ -36,7 +36,7 @@ struct GeofenceEditView: View {
                         Spacer()
                         Text("Edit Geofence")
                         Spacer()
-                        Button(action: { self.show = false }) { Text("Save") }
+                        Button(action: { self.save(); self.show = false }) { Text("Save") }
                     }
                 .padding([.leading, .trailing], 20)
             }
@@ -53,7 +53,10 @@ struct GeofenceEditView: View {
                 Rectangle()
                     .fill(Color.white)
                     .cornerRadius(20, corners: [.topLeft, .topRight])
-                MenuView(location: $location)
+                if modelData.tempLocation != nil {
+                    MenuView(location: Binding($modelData.tempLocation)!)
+                }
+                
             }
             .frame(width: UIScreen.main.bounds.width, height: 120)
             //.background(Color.blue)
@@ -76,6 +79,9 @@ struct GeofenceEditView: View {
 //            location = tempLocation
         //modelData.locations[locationIndex] = location
 //        }
+        print(modelData.shouldSaveChanges)
+        modelData.shouldSaveChanges.toggle()
+        
         return
         //save state and return to list
         //fancy popup message about saving it succesfully upon completion
@@ -95,7 +101,7 @@ struct GeofenceEditView_Previews: PreviewProvider {
     static var previews: some View {
         
 //        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
-        GeofenceEditView(show: .constant(true), location: .constant(ModelData.instance.locations.first!))
+        GeofenceEditView(show: .constant(true))
 //                        .previewDevice(PreviewDevice(rawValue: deviceName))
 //                        .previewDisplayName(deviceName)
 //        }

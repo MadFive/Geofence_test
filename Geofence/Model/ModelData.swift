@@ -16,6 +16,18 @@ import SwiftUI
 final class ModelData: ObservableObject {
     
     static let instance = ModelData()
+    var shouldSaveChanges = false {
+        willSet {
+            self.saveChanges()
+            objectWillChange.send()
+        }
+    }
+    @Published var tempLocation: Location? {
+        willSet {
+            print("temp location changed")
+            //objectWillChange.send()
+        }
+    }
     @Published var zoomValue: Double = 0.1
     @Published var locations = [Location]()
     let filename = "locationData.json"
@@ -41,6 +53,8 @@ final class ModelData: ObservableObject {
             fatalError("Couldn’t parse \(filename) as \(T.self):\n\(error)")
         }
     }
+    
+    
     
     func loadBundleData(_ filename: String) -> Data {
         
@@ -83,6 +97,14 @@ final class ModelData: ObservableObject {
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
+    }
+    
+    
+    func saveChanges() {
+        guard let location = self.tempLocation else { return }
+        guard let index = locations.firstIndex(where: { $0.name == location.name }) else { return }
+        locations[index] = location
+        print("location saved")
     }
 }
 

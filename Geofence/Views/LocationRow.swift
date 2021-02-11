@@ -15,19 +15,27 @@ struct LocationRow: View {
         }
     
     var body: some View {
-        Spacer()
-        HStack {
-            VStack(alignment: .leading) {
-                Text(location.name)
-                    .font(.title2)
-                Text(location.address)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+        ZStack {
+            Rectangle()
+                .fill(Color.white)
+                .background(Color.clear)
+            
+        VStack {
+            Spacer()
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(location.name)
+                        .font(.title2)
+                    Text(location.address)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                StateButton(statusOn: $modelData.locations[locationIndex].stateValue)
             }
             Spacer()
-            StateButton(statusOn: $modelData.locations[locationIndex].stateValue)
         }
-        Spacer()
+        }
     }
 }
 
