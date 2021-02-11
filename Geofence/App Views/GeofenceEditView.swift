@@ -8,24 +8,13 @@
 import SwiftUI
 
 struct GeofenceEditView: View {
-    
     @Environment(\.presentationMode) var presentation
-    //@EnvironmentObject var modelData: ModelData
     @Binding var show: Bool
-    //@Binding var location: Location
     @EnvironmentObject var modelData: ModelData
-    
-//    @State private var tempLocation: Location = ModelData.instance.locations.first!
-//    var locationIndex: Int {
-////        if let location = location {
-//            return modelData.locations.firstIndex(where: { $0.name == location.name })!
-////        }
-////        return 0
-//    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            //let offset = 50
+            //header
             ZStack {
                 Rectangle()
                     .fill(Color.white)
@@ -40,7 +29,6 @@ struct GeofenceEditView: View {
                     }
                 .padding([.leading, .trailing], 20)
             }
-            
             Spacer()
             
             ZoomView()
@@ -48,7 +36,7 @@ struct GeofenceEditView: View {
                 .padding(.leading, 20)
                 .environmentObject(modelData)
             
-            
+            //menu view
             ZStack {
                 Rectangle()
                     .fill(Color.white)
@@ -56,10 +44,8 @@ struct GeofenceEditView: View {
                 if modelData.tempLocation != nil {
                     MenuView(location: Binding($modelData.tempLocation)!)
                 }
-                
             }
             .frame(width: UIScreen.main.bounds.width, height: 120)
-            //.background(Color.blue)
         }
         
             
@@ -73,25 +59,7 @@ struct GeofenceEditView: View {
     }
     
     func save() {
-        
-        //commit changes to env obj
-//        if let tempLocation = tempLocation {
-//            location = tempLocation
-        //modelData.locations[locationIndex] = location
-//        }
-        print(modelData.shouldSaveChanges)
         modelData.shouldSaveChanges.toggle()
-        
-        return
-        //save state and return to list
-        //fancy popup message about saving it succesfully upon completion
-        
-        
-        //data permanance??? - copy json to device storage upon first run
-        let data = modelData.loadBundleData(modelData.filename)
-        modelData.saveDataToDocumentsDirectory(data)
-        
-        
     }
     
     

@@ -11,13 +11,8 @@ struct StateButton: View {
     @Binding var statusOn: Bool
 
     var body: some View {
-        Button(action: {
-            //statusOn.toggle()
-        }) {
-            Text(statusOn ? "ON" : "OFF")
-                .foregroundColor(statusOn ? Color.blue : Color.gray)
-        }
-        //.background(Color.red)
+        Text(statusOn ? "ON" : "OFF")
+            .foregroundColor(statusOn ? Color.blue : Color.gray)
     }
 }
 

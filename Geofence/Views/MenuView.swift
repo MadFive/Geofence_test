@@ -9,11 +9,6 @@ import SwiftUI
 import CoreLocation
 
 struct MenuView: View {
-    
-//    @Binding private var statusOn: Bool
-//    @Binding private var alarmOn: Bool
-//    @Binding private var radiusValue: Int
-//
     @Binding var location: Location
     var distance: Int {
         let location1 = CLLocation(latitude: location.locationCoordinate.latitude, longitude: location.locationCoordinate.longitude)
@@ -21,9 +16,9 @@ struct MenuView: View {
         return Int(location1.distance(from: location2).rounded())
     }
     
-    
     var body: some View {
         VStack {
+            //top row
             HStack {
                 VStack(alignment: .leading) {
                     Text(location.name)
@@ -40,26 +35,21 @@ struct MenuView: View {
                 }
                 Spacer()
                 
-                Toggle(isOn: $location.stateValue) { //$location.stateValue ??
-                    Text("")
-                }
+                Toggle(isOn: $location.stateValue) { Text("") }
                 .frame(width: 30)
                 .padding(.trailing, 20)
             }
             Divider()
+            
+            //bottom row
             HStack {
-                
                 AlarmButton(location: $location)
-                
                 Divider()
-                
                 RadiusButton(location: $location)
             }
         }
         .padding([.leading, .trailing], 20)
-        .padding([.top, .bottom], 30)
-        //.background(Color.green)
-        
+        .padding([.top, .bottom], 30)        
     }
 }
 

@@ -18,19 +18,18 @@ struct RadiusButton: View {
             Rectangle()
                 .fill(Color.white)
                 .background(Color.clear)
-        HStack {
-            Image("ic_radius")
-                .resizable()
-                .frame(width: 20, height: 20)
-            Text("Radius")
-            Spacer()
-            Text("\(location.radius)km")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
+            HStack {
+                Image("ic_radius")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Radius")
+                Spacer()
+                Text("\(location.radius)km")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
         }
         .onTapGesture {
-            //toggle
             currentRadiusIndex += 1
             let newIndex = currentRadiusIndex % radiusValues.count
             print(newIndex)

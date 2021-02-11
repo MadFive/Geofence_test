@@ -11,42 +11,42 @@ struct LocationRow: View {
     @EnvironmentObject var modelData: ModelData
     var location: Location
     var locationIndex: Int {
-            modelData.locations.firstIndex(where: { $0.name == location.name })!
-        }
+        modelData.locations.firstIndex(where: { $0.name == location.name })!
+    }
     
     var body: some View {
         ZStack {
+            //clickable view
             Rectangle()
                 .fill(Color.white)
                 .background(Color.clear)
             
-        VStack {
-            Spacer()
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(location.name)
-                        .font(.title2)
-                    Text(location.address)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+            //contentView
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(location.name)
+                            .font(.title2)
+                        Text(location.address)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    Spacer()
+                    StateButton(statusOn: $modelData.locations[locationIndex].stateValue)
                 }
-                Spacer()
-                StateButton(statusOn: $modelData.locations[locationIndex].stateValue)
+                .padding([.top, .bottom], 10)
             }
-            Spacer()
-        }
         }
     }
 }
 
 struct LocationRoww_Previews: PreviewProvider {
-    
     static var locations = ModelData.instance.locations
     static var previews: some View {
         Group {
             LocationRow(location: locations[0])
             LocationRow(location: locations[1])
         }
-            .previewLayout(.fixed(width: 300, height: 70))
+        .previewLayout(.fixed(width: 300, height: 70))
     }
 }

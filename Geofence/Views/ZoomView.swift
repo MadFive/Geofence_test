@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ZoomView: View {
-    
     @EnvironmentObject var modelData: ModelData
-    //var zoomValue = 0.1
     
     var body: some View {
         ZStack {
@@ -18,19 +16,21 @@ struct ZoomView: View {
                 .fill(Color.white)
         
             VStack {
+                //plus button
                 Button(action: {
                     modelData.zoomValue -= (modelData.zoomValue < 0.2) ? 0 : 0.1
                     print(modelData.zoomValue)
                     
                 }) { Text("+").font(.title) } //Image("ic_positive")
+                
                 Spacer()
                 Divider()
                 Spacer()
+                
+                //minus button
                 Button(action: {
                     print(modelData.zoomValue)
                     modelData.zoomValue += 0.1
-                    
-                    
                 }) { Text("-").font(.title) }
             }
             .padding([.top, .bottom], 10)

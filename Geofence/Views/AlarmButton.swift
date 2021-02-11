@@ -28,8 +28,6 @@ struct AlarmButton: View {
             }
         }
         .onTapGesture {
-            //toggle
-            //location.alarmValue.toggle()
             location.alarmValue.toggle()
         }
     }

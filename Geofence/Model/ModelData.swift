@@ -10,10 +10,6 @@ import Combine
 import SwiftUI
 import MapKit
 
-//final class TestModelData: ObservableObject {
-//     var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
-//}
-
 final class ModelData: ObservableObject {
     
     static let instance = ModelData()
@@ -41,7 +37,6 @@ final class ModelData: ObservableObject {
             data = loadBundleData(filename)
         }
         
-        
         do {
             let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)
@@ -49,8 +44,6 @@ final class ModelData: ObservableObject {
             fatalError("Couldn’t parse \(filename) as \(T.self):\n\(error)")
         }
     }
-    
-    
     
     func loadBundleData(_ filename: String) -> Data {
         
@@ -77,8 +70,6 @@ final class ModelData: ObservableObject {
         }
     }
     
-    
-    
     func saveDataToDocumentsDirectory(_ data: Data) {
         let url = getDocumentsDirectory().appendingPathComponent(filename)
         //let data = loadBundleData(filename)
@@ -100,7 +91,14 @@ final class ModelData: ObservableObject {
         guard let location = self.tempLocation else { return }
         guard let index = locations.firstIndex(where: { $0.name == location.name }) else { return }
         locations[index] = location
-        print("location saved")
+        
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(locations)
+            saveDataToDocumentsDirectory(data)
+        } catch {
+            fatalError("Couldn’t parse \(filename) as \(error)")
+        }
     }
 }
 
