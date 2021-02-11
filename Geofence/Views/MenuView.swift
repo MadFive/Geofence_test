@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct MenuView: View {
     
@@ -14,6 +15,12 @@ struct MenuView: View {
 //    @Binding private var radiusValue: Int
 //
     @Binding var location: Location
+    var distance: Int {
+        let location1 = CLLocation(latitude: location.locationCoordinate.latitude, longitude: location.locationCoordinate.longitude)
+        let location2 = CLLocation(latitude: ModelData.instance.currentLocation.latitude, longitude: ModelData.instance.currentLocation.longitude)
+        return Int(location1.distance(from: location2).rounded())
+    }
+    
     
     var body: some View {
         VStack {
@@ -24,7 +31,7 @@ struct MenuView: View {
                         .foregroundColor(.primary)
                     
                     HStack {
-                        Text("123m") //CurrentPosition - 5.55613, 95.3218
+                        Text("\(distance)m") //CurrentPosition - 5.55613, 95.3218
                         Divider()
                         Text(location.address)
                     }

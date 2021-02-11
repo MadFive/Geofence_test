@@ -18,7 +18,7 @@ struct MapViewController : UIViewControllerRepresentable {
     
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<MapViewController>) -> UIHostingController<MapView> {
-        return UIHostingController(rootView: MapView(zoomValue: $zoomValue, location: location))
+        return UIHostingController(rootView: MapView(zoomValue: $zoomValue))
     }
 
     func updateUIViewController(_ uiViewController: UIHostingController<MapView>, context: UIViewControllerRepresentableContext<MapViewController>) {
@@ -41,28 +41,29 @@ struct MapView: View {
     
     
     @Environment(\.modelData) var observedEnvironment: ModelData
-    //@EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var modelData: ModelData
     @State private var region = MKCoordinateRegion()
     @Binding var zoomValue: Double
     @State var coll = [MKPointAnnotation]()
     
     let mapViewDelegate = MapViewDelegate()
-    var location: Location
+    //var location: Location
     var circleSize: CGFloat {
-        250 - 500 * CGFloat(region.span.latitudeDelta)
+        CGFloat((modelData.tempLocation?.radius ?? 1) * 25)
+        
     }
     var circleColor: Color {
-        location.alarmValue ? Color.green : Color.red
+        modelData.tempLocation?.alarmValue ?? false ?  Color.red : Color.green
     }
     var coordinate: CLLocationCoordinate2D {
         //return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         return CLLocationCoordinate2D(latitude: 53.2734, longitude: -7.77832031)
     }
     
-    func onAppear() {
+    func addCircle() {
             let destinationAnnotation = MKPointAnnotation()
             destinationAnnotation.coordinate = coordinate
-            destinationAnnotation.title = "Location"
+//            destinationAnnotation.title = "Location"
             coll.append(destinationAnnotation)
         }
     
@@ -70,6 +71,7 @@ struct MapView: View {
         Map(coordinateRegion: $region, annotationItems: coll) { item in
             MapAnnotation(coordinate: coordinate, content: {
                 CircleView(color: circleColor, size: circleSize)
+                    //.scaleEffect(-CGFloat(region.span.latitudeDelta) * 5)
             })
         }
             
@@ -78,12 +80,12 @@ struct MapView: View {
             .onReceive(observedEnvironment.$zoomValue, perform: { _ in
                 withAnimation {
                     self.setRegion(coordinate)
-                    //self.addOverlay()
+                    self.addOverlay()
                 }
             })
             .onAppear {
                 self.setRegion(coordinate)
-                self.onAppear()
+                self.addCircle()
             }
         //.onAppear(perform: self.onAppear)
     }
@@ -97,7 +99,7 @@ struct MapView: View {
     
     
     func addOverlay() {
-        let circle = MKCircle(center: coordinate, radius: 250)
+//        let circle = MKCircle(center: coordinate, radius: 250)
         CircleView(color: circleColor, size: circleSize)
         
     }
@@ -107,7 +109,7 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(zoomValue: .constant(0.2), location: ModelData.instance.locations.first!)
+        MapView(zoomValue: .constant(0.2))
     }
 }
 

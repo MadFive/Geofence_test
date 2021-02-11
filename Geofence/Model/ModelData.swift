@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import MapKit
 
 //final class TestModelData: ObservableObject {
 //     var locations: [Location] = ModelData.instance.load(ModelData.instance.filename)
@@ -22,16 +23,11 @@ final class ModelData: ObservableObject {
             objectWillChange.send()
         }
     }
-    @Published var tempLocation: Location? {
-        willSet {
-            print("temp location changed")
-            //objectWillChange.send()
-        }
-    }
+    @Published var tempLocation: Location?
     @Published var zoomValue: Double = 0.1
     @Published var locations = [Location]()
     let filename = "locationData.json"
-    
+    let currentLocation = CLLocationCoordinate2D(latitude: 5.55613, longitude: 95.3218)
     private init() {
         locations = load("locationData.json")
     }

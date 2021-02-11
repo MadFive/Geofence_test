@@ -13,6 +13,8 @@ struct GeofenceApp: App {
     
     var body: some Scene {
         WindowGroup {
+//            MapView(zoomValue: $modelData.zoomValue, location: modelData.locations.first!)
+            
             ContentView()
                 .environmentObject(modelData)
         }
