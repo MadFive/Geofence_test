@@ -18,8 +18,8 @@ struct ZoomView: View {
             VStack {
                 //plus button
                 Button(action: {
-                    modelData.zoomValue -= (modelData.zoomValue < 0.2) ? 0 : 0.1
-                    print(modelData.zoomValue)
+                    modelData.zoomValue -= (modelData.zoomValue < 0.02) ? 0 : 0.1
+                    //print(modelData.zoomValue)
                     
                 }) { Text("+").font(.title) } //Image("ic_positive")
                 
@@ -29,7 +29,7 @@ struct ZoomView: View {
                 
                 //minus button
                 Button(action: {
-                    print(modelData.zoomValue)
+                    //print(modelData.zoomValue)
                     modelData.zoomValue += 0.1
                 }) { Text("-").font(.title) }
             }

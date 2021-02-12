@@ -10,6 +10,8 @@ import SwiftUI
 import CoreLocation
 
 struct Location: Hashable, Codable {
+    //var id = UUID()
+    
     public var name: String
     public var address: String
     public var latitude: Double

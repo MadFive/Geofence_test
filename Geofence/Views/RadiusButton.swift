@@ -32,7 +32,7 @@ struct RadiusButton: View {
         .onTapGesture {
             currentRadiusIndex += 1
             let newIndex = currentRadiusIndex % radiusValues.count
-            print(newIndex)
+            //print(newIndex)
             location.radius = radiusValues[newIndex]
         }
     }
