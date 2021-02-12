@@ -14,7 +14,7 @@ struct MapViewController : UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         let location = modelData.tempLocation ?? modelData.locations.first!
-        modelData.currentRadius = Double(location.radius)
+        //modelData.currentRadius = Double(location.radius)
         let map = MKMapView()
         map.region = MKCoordinateRegion()
         return map
